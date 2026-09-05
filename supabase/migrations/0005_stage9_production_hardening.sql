@@ -5,7 +5,7 @@ create index if not exists idx_submissions_contest_user_problem_time
   on public.submissions(contest_id, user_id, problem_id, submitted_at desc);
 
 create index if not exists idx_integrity_events_contest_user_time
-  on public.integrity_events(contest_id, user_id, created_at desc);
+  on public.integrity_events(contest_id, user_id, event_timestamp desc);
 
 alter table public.contests
   add constraint contests_valid_window
