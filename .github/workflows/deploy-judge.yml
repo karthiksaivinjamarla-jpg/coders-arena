@@ -1,0 +1,41 @@
+name: Build Judge Images
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'infrastructure/docker/**'
+      - 'apps/judge-worker/**'
+      - 'infrastructure/production/docker-compose.judge.yml'
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      matrix:
+        include:
+          - language: cpp
+            dockerfile: infrastructure/docker/cpp/Dockerfile
+          - language: python
+            dockerfile: infrastructure/docker/python/Dockerfile
+          - language: java
+            dockerfile: infrastructure/docker/java/Dockerfile
+          - language: javascript
+            dockerfile: infrastructure/docker/javascript/Dockerfile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/coders-arena-${{ matrix.language }}:latest

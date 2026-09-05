@@ -1,0 +1,14 @@
+name: Deploy Web
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deployment gate
+        run: |
+          echo "Connect this repository to the Vercel project before enabling automatic production deployment."
+          echo "This workflow intentionally does not contain production secrets."

@@ -1,0 +1,16 @@
+name: Vercel Production Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deployment handoff
+        run: |
+          echo "Vercel deployment is intentionally manual until the repository is connected to the intended Vercel project."
+          echo "Use the Vercel dashboard or Vercel CLI with project-scoped credentials."

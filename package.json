@@ -1,0 +1,27 @@
+{
+  "name": "coders-arena",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "lint": "pnpm --filter web lint",
+    "typecheck": "pnpm --filter web typecheck",
+    "test": "pnpm --filter web test",
+    "worker:dev": "pnpm --filter judge-worker dev",
+    "worker:build": "pnpm --filter judge-worker build",
+    "stage5:smoke": "node scripts_smoke_stage5.mjs",
+    "stage6:smoke": "node scripts_smoke_stage6.mjs",
+    "stage7:smoke": "node scripts_smoke_stage7.mjs",
+    "stage8:smoke": "node scripts_smoke_stage8.mjs",
+    "stage9:smoke": "node scripts_smoke_stage9.mjs",
+    "stage10:preflight": "node scripts/stage10-preflight.mjs",
+    "stage11:smoke": "node scripts/smoke-stage11.mjs",
+    "stage12:smoke": "node scripts/smoke-stage12.mjs",
+    "stage13:preflight": "node scripts/stage13-preflight.mjs"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  },
+  "packageManager": "pnpm@10.15.0"
+}
